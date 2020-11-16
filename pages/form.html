@@ -100,10 +100,10 @@
         const pwd = document.getElementById("pwd");
         const pwdError = document.querySelector('.pwd-error');
         pwd.addEventListener('input', function() {
-            let pwdRegex = RegExp('[a-zA-Z0-9!@#$%^&*]{8,}');
+            let pwdRegex = RegExp('^(?=.*\\d)(?=.*[A-Z])(?=.*\\W)(?!.*\\W\\w*\\W)(?!.*\\s).{8,}$');
             let message = "";
             if(!pwdRegex.test(pwd.value))
-                message = "Should have 8+ characters.";
+                message = "Invalid password";
             pwdError.textContent = message;
         });
     

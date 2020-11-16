@@ -21,6 +21,7 @@
         <div>
             <label for="pwd">Password input type:</label>
             <input type="password" id="pwd" name="pwd" required>
+            <error-output class="pwd-error" for="pwd"></error-output>
         </div>
         <div>
             <label for="email">Email input type:</label>
@@ -94,6 +95,16 @@
                 phoneError.textContent = "";
             else
                 phoneError.textContent = "Number is incorrect.";
+        });
+
+        const pwd = document.getElementById("pwd");
+        const pwdError = document.querySelector('.pwd-error');
+        pwd.addEventListener('input', function() {
+            let pwdRegex = RegExp('[a-zA-Z0-9!@#$%^&*]{8,}');
+            let message = "";
+            if(!pwdRegex.test(pwd.value))
+                message = "Should have 8+ characters.";
+            pwdError.textContent = message;
         });
     
     </script>
